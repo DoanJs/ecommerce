@@ -1,3 +1,5 @@
-import TextComponent from "./TextComponent";
+import Container from './Container';
+import RowComponent from './RowComponent';
+import TextComponent from './TextComponent';
 
-export { TextComponent };
+export { Container, RowComponent, TextComponent };

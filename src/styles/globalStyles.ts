@@ -4,9 +4,13 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   center: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
 });
