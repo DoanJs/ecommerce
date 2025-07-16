@@ -1,3 +1,4 @@
+import HomeAuth from './auth/HomeAuth';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import CartScreen from './cart/CartScreen';
@@ -12,4 +13,5 @@ export {
   CartScreen,
   NotificationsScreen,
   ProfileScreen,
+  HomeAuth
 };

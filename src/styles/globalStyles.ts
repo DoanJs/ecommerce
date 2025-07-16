@@ -13,4 +13,8 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
+  section: {
+    marginBottom: 16,
+    paddingHorizontal: 16
+  },
 });

@@ -1,13 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Container } from '../../components';
+import { Container, TextComponent } from '../../components';
 
 const Login = () => {
   return (
-    <Container>
-      <View>
-        <Text>Login</Text>
-      </View>
+    <Container back>
+      <TextComponent text="asasdasdasd" />
     </Container>
   );
 };
