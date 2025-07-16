@@ -5,7 +5,7 @@ import SpaceConponent from '../../components/SpaceComponent';
 import { colors } from '../../constants/colors';
 import { globalStyles } from '../../styles/globalStyles';
 
-const HomeAuth = () => {
+const HomeAuth = ({navigation}: any) => {
   return (
     <ImageBackground
       style={[globalStyles.container]}
@@ -15,16 +15,14 @@ const HomeAuth = () => {
       <View style={[localStyle.viewBlank]} />
       <SectionComponent styles={[localStyle.haSection]}>
         <ButtonComponent
-        //   isLoading
           text="Login"
-          onPress={() => {}}
+          onPress={() => navigation.navigate('SwiperScreen')}
           color={colors.white}
         />
         <SpaceConponent height={16} />
         <ButtonComponent
-          // isLoading
           text="Sign Up"
-          onPress={() => {}}
+          onPress={() => navigation.navigate('SwiperScreen')}
           color="transparent"
           styles={[localStyle.haBtn]}
           textStyles={{ color: colors.white }}
