@@ -1,19 +1,38 @@
-import React from 'react';
-import { ActivityIndicator, StyleProp, StyleSheet, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
+import React, { ReactNode } from 'react';
+import {
+  ActivityIndicator,
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 import { colors } from '../constants/colors';
 import { fontFamilies } from '../constants/fontFamilies';
+import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
 interface Props {
+  color?: string;
+  onPress: () => void;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
   text: string;
   isLoading?: boolean;
-  color?: string;
   styles?: StyleProp<ViewStyle>;
   textStyles?: StyleProp<TextStyle>;
-  onPress: () => void;
 }
 
 const ButtonComponent = (props: Props) => {
-  const { text, isLoading, onPress, color, styles, textStyles } = props;
+  const {
+    text,
+    isLoading,
+    onPress,
+    color,
+    styles,
+    textStyles,
+    prefix,
+    suffix,
+  } = props;
   const localStyle = StyleSheet.create({
     btnContainer: {
       justifyContent: 'center',
@@ -21,10 +40,7 @@ const ButtonComponent = (props: Props) => {
       backgroundColor: color ? color : isLoading ? colors.gray : colors.dark,
       padding: 14,
       borderRadius: 100,
-    },
-    btnText: {
-      textTransform: 'uppercase',
-    },
+    }
   });
   return (
     <TouchableOpacity
@@ -35,13 +51,19 @@ const ButtonComponent = (props: Props) => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <TextComponent
-          text={text}
-          flex={0}
-          styles={[localStyle.btnText, textStyles]}
-          size={16}
-          font={fontFamilies.poppinsBold}
-        />
+        <RowComponent>
+          {
+            prefix ?? prefix
+          }
+          <TextComponent
+            text={text}
+            flex={0}
+            styles={textStyles}
+            size={16}
+            font={fontFamilies.poppinsBold}
+          />
+          {suffix ?? suffix}
+        </RowComponent>
       )}
     </TouchableOpacity>
   );

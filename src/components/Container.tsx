@@ -14,6 +14,7 @@ import { globalStyles } from '../styles/globalStyles';
 type Props = {
   children: ReactNode;
   title?: string;
+  bg?: string;
   back?: boolean;
   left?: ReactNode;
   right?: ReactNode;
@@ -21,7 +22,7 @@ type Props = {
 };
 
 const Container = (props: Props) => {
-  const { children, title, back, left, right, isScroll } = props;
+  const { children, title, bg, back, left, right, isScroll } = props;
   const localStyle = StyleSheet.create({
     header: {
       paddingHorizontal: 16,
@@ -32,7 +33,7 @@ const Container = (props: Props) => {
   });
 
   return (
-    <SafeAreaView style={[globalStyles.container]}>
+    <SafeAreaView style={[globalStyles.container, { backgroundColor: bg }]}>
       {(back || left || right || title) && (
         <RowComponent styles={[localStyle.header]}>
           {back && <TextComponent text="Back" />}

@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import Swiper from 'react-native-swiper';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import slider_1 from '../../assests/images/sliders/slider-1.png';
 import slider_2 from '../../assests/images/sliders/slider-2.png';
 import slider_3 from '../../assests/images/sliders/slider-3.png';
-import { BtnCircleComponent, Container, RowComponent, TextComponent } from '../../components';
+import { CircleComponent, Container, RowComponent } from '../../components';
+import SpaceConponent from '../../components/SpaceComponent';
 import { colors } from '../../constants/colors';
-import { fontFamilies } from '../../constants/fontFamilies';
 import { sizes } from '../../constants/sizes';
-import { Play } from 'iconsax-react-nativejs';
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6'
-import Octicons from 'react-native-vector-icons/Octicons'
 
-const SwiperScreen = ({ navigation }: any) => {
+const SwiperScreen = ({ navigation, route }: any) => {
+  const { screen } = route.params;
   const [index, setIndex] = useState(0);
 
   return (
@@ -39,21 +38,19 @@ const SwiperScreen = ({ navigation }: any) => {
           })}
         </RowComponent>
 
-        <BtnCircleComponent>
-          <Octicons name='dash' color={colors.white} size={18}/>
-          <FontAwesome6 name='play' color={colors.white} size={18}/>
-        </BtnCircleComponent>
-        {/* <TouchableOpacity
+        <CircleComponent
           onPress={() => {
-            index < 2 ? setIndex(index + 1) : navigation.navigate('Login');
+            index < 2
+              ? setIndex(index + 1)
+              : screen && screen === 'Login'
+              ? navigation.navigate('Login')
+              : navigation.navigate('Register');
           }}
         >
-          <TextComponent
-            text="Next"
-            color={colors.dark}
-            font={fontFamilies.poppinsMedium}
-          />
-        </TouchableOpacity> */}
+          <View style={localStyle.swDash} />
+          <SpaceConponent width={4} />
+          <FontAwesome6 name="play" color={colors.white} size={18} />
+        </CircleComponent>
       </View>
     </Container>
   );
@@ -92,5 +89,10 @@ const localStyle = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: colors.dark,
     marginHorizontal: 2,
+  },
+  swDash: {
+    height: 4,
+    width: 8,
+    backgroundColor: colors.white,
   },
 });
