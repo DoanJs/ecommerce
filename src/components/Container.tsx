@@ -19,10 +19,22 @@ type Props = {
   left?: ReactNode;
   right?: ReactNode;
   isScroll?: boolean;
+  showsHorizontalScrollIndicator?: boolean;
+  showsVerticalScrollIndicator?: boolean;
 };
 
 const Container = (props: Props) => {
-  const { children, title, bg, back, left, right, isScroll } = props;
+  const {
+    children,
+    title,
+    bg,
+    back,
+    left,
+    right,
+    isScroll,
+    showsVerticalScrollIndicator,
+    showsHorizontalScrollIndicator,
+  } = props;
   const localStyle = StyleSheet.create({
     header: {
       paddingHorizontal: 16,
@@ -53,7 +65,17 @@ const Container = (props: Props) => {
       {!isScroll ? (
         <View style={[globalStyles.container]}>{children}</View>
       ) : (
-        <ScrollView style={[globalStyles.container]}>{children}</ScrollView>
+        <ScrollView
+          style={[globalStyles.container]}
+          showsHorizontalScrollIndicator={
+            showsHorizontalScrollIndicator ?? undefined
+          }
+          showsVerticalScrollIndicator={
+            showsVerticalScrollIndicator ?? undefined
+          }
+        >
+          {children}
+        </ScrollView>
       )}
     </SafeAreaView>
   );

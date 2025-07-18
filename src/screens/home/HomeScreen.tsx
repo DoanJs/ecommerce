@@ -12,6 +12,7 @@ import {
   CircleComponent,
   Container,
   InputComponent,
+  ProductItemComponent,
   RowComponent,
   SectionComponent,
   SpaceComponent,
@@ -24,7 +25,7 @@ const HomeScreen = () => {
   const [search, setSearch] = useState('');
   const [focusCategory, setFocusCategory] = useState(0);
   return (
-    <Container isScroll bg={colors.white}>
+    <Container isScroll bg={colors.white} showsVerticalScrollIndicator={false}>
       <SectionComponent styles={{ paddingTop: 40 }}>
         <RowComponent justify="space-between">
           <CircleComponent width={36} height={36}>
@@ -162,6 +163,37 @@ const HomeScreen = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
+      </SectionComponent>
+
+      <SectionComponent>
+        <RowComponent justify="space-between">
+          <TextComponent
+            text="Top Dresses"
+            type="bigTitle"
+            font={fontFamilies.poppinsBold}
+          />
+          <TouchableOpacity onPress={() => {}}>
+            <TextComponent
+              text="View All"
+              type="description"
+              color={colors.gray2}
+              font={fontFamilies.poppinsBold}
+            />
+          </TouchableOpacity>
+        </RowComponent>
+
+        <SpaceComponent height={10} />
+
+        <RowComponent justify="space-between" styles={{ flexWrap: 'wrap' }}>
+          <ProductItemComponent />
+          <ProductItemComponent />
+          <ProductItemComponent />
+          <ProductItemComponent />
+          <ProductItemComponent />
+          <ProductItemComponent />
+          <ProductItemComponent />
+          <ProductItemComponent />
+        </RowComponent>
       </SectionComponent>
     </Container>
   );
