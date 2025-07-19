@@ -14,7 +14,6 @@ import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
 import { colors } from '../constants/colors';
 
-
 interface Props {
   value: string;
   onChange: (val: string) => void;
@@ -30,6 +29,7 @@ interface Props {
   titleStyles?: StyleProp<TextStyle>;
   textStyles?: StyleProp<TextStyle>;
   color?: string;
+  placeholderTextColor?: string;
 }
 
 const InputComponent = (props: Props) => {
@@ -48,6 +48,7 @@ const InputComponent = (props: Props) => {
     titleStyles,
     textStyles,
     color,
+    placeholderTextColor,
   } = props;
   const [showPass, setShowPass] = useState(false);
 
@@ -79,7 +80,7 @@ const InputComponent = (props: Props) => {
               textStyles,
             ]}
             placeholder={placeholder ?? ''}
-            placeholderTextColor={'#676767'}
+            placeholderTextColor={placeholderTextColor ?? '#676767'}
             value={value}
             onChangeText={val => onChange(val)}
             multiline={multible}
@@ -97,9 +98,9 @@ const InputComponent = (props: Props) => {
         {isPassword && (
           <TouchableOpacity onPress={() => setShowPass(!showPass)}>
             {showPass ? (
-              <Ionicons name='eye' size={20} color={colors.dark}/>
+              <Ionicons name="eye" size={20} color={colors.dark} />
             ) : (
-              <Ionicons name='eye-off' size={20} color={colors.dark}/>
+              <Ionicons name="eye-off" size={20} color={colors.dark} />
             )}
           </TouchableOpacity>
         )}

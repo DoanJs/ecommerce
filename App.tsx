@@ -5,7 +5,7 @@ import MainNavigator from './src/routers/MainNavigator';
 import SplashScreen from './src/screens/SplashScreen';
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); //check!!!!!
   const [isWellcome, setIsWellcome] = useState(true);
 
   useEffect(() => {

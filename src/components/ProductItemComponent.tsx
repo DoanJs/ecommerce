@@ -1,5 +1,6 @@
+import { Heart } from 'iconsax-react-nativejs';
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import { SpaceComponent, TextComponent } from '.';
 import shoe02 from '../assests/images/shoe02.png';
 import { colors } from '../constants/colors';
@@ -16,6 +17,8 @@ const ProductItemComponent = () => {
           height: 200,
           borderRadius: 16,
           backgroundColor: colors.gray2,
+          marginBottom: 10,
+          marginRight: 10
         }}
       />
       <TextComponent
@@ -35,6 +38,19 @@ const ProductItemComponent = () => {
         font={fontFamilies.poppinsBold}
       />
       <SpaceComponent height={36} />
+
+      <TouchableOpacity
+        style={{
+          position: 'absolute',
+          top: 16,
+          right: 16,
+          padding: 6,
+          borderRadius: 100,
+          backgroundColor: colors.dark,
+        }}
+      >
+        <Heart color={colors.white} size={12} />
+      </TouchableOpacity>
     </RowComponent>
   );
 };

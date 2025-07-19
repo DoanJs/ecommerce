@@ -9,4 +9,5 @@ export const colors = {
     skip:'#ABB4FF',
     blue: '#3b5999',
     green: '#64ba67',
+    star: '#feab07'
 }

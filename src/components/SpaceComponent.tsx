@@ -6,9 +6,9 @@ interface Props {
   height?: number;
 }
 
-const SpaceConponent = (props: Props) => {
+const SpaceComponent = (props: Props) => {
   const { width, height } = props;
   return <View style={{ width, height }} />;
 };
 
-export default SpaceConponent;
+export default SpaceComponent;
