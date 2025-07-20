@@ -4,6 +4,8 @@ export const colors = {
     gray:'#f3f4f5',
     gray2:'#aaaaaa',
     gray3:'#dddddd',
+    gray4:'#eeeeee',
+    gray5:'#4d4a5d',
     white:'#ffffff',
     dot: '#7887FF',
     skip:'#ABB4FF',

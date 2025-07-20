@@ -57,10 +57,10 @@ const ProductMixScreen = ({ navigation }: any) => {
           </RowComponent>
           <SpaceComponent height={10} />
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
+            <ProductItemComponent styles={{marginRight: 10}}/>
+            <ProductItemComponent styles={{marginRight: 10}}/>
+            <ProductItemComponent styles={{marginRight: 10}}/>
+            <ProductItemComponent styles={{marginRight: 10}}/>
           </ScrollView>
         </SectionComponent>
 

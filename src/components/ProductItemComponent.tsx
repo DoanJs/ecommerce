@@ -1,24 +1,34 @@
-import { Heart } from 'iconsax-react-nativejs';
+import { Heart, Ontology } from 'iconsax-react-nativejs';
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import { SpaceComponent, TextComponent } from '.';
 import shoe02 from '../assests/images/shoe02.png';
 import { colors } from '../constants/colors';
 import { fontFamilies } from '../constants/fontFamilies';
 import RowComponent from './RowComponent';
+import { useNavigation } from '@react-navigation/native';
 
-const ProductItemComponent = () => {
+interface Props {
+  styles?: StyleProp<ViewStyle>;
+  onPress?: () => void
+}
+
+const ProductItemComponent = (props: Props) => {
+  const { styles, onPress } = props;
+  const navigation = useNavigation();
   return (
-    <RowComponent styles={{ flexDirection: 'column' }}>
+    <RowComponent
+      styles={[{ flexDirection: 'column', width: '48%' }, styles]}
+      onPress={onPress}
+    >
       <Image
         source={shoe02}
         style={{
-          width: 190,
+          width: '100%',
           height: 200,
           borderRadius: 16,
           backgroundColor: colors.gray2,
           marginBottom: 10,
-          marginRight: 10
         }}
       />
       <TextComponent

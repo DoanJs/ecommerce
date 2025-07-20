@@ -48,7 +48,10 @@ const SearchCategoryScreen = ({ navigation }: any) => {
       </SectionComponent>
       <ScrollView showsVerticalScrollIndicator={false}>
         <SectionComponent>
-          <RowComponent justify="space-between" styles={{ flexWrap: 'wrap' }}>
+          <RowComponent
+            justify="space-between"
+            styles={{ flexWrap: 'wrap', width: '100%' }}
+          >
             {[
               {
                 name: 'New Arrivals',

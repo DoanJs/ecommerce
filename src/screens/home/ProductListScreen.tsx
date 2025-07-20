@@ -40,7 +40,10 @@ const ProductListScreen = ({ navigation, route }: any) => {
         />
         <SpaceComponent height={10} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <RowComponent justify="space-between" styles={{ flexWrap: 'wrap' }}>
+          <RowComponent
+            justify="space-between"
+            styles={{ width: '100%', flexWrap: 'wrap' }}
+          >
             <ProductItemComponent />
             <ProductItemComponent />
             <ProductItemComponent />

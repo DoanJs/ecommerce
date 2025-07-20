@@ -1,4 +1,5 @@
 import ButtonComponent from './ButtonComponent';
+import CartItemComponent from './CartItemComponent';
 import CategoryComponent from './CategoryComponent';
 import CircleComponent from './CircleComponent';
 import Container from './Container';
@@ -14,6 +15,7 @@ import TextComponent from './TextComponent';
 
 export {
   ButtonComponent,
+  CartItemComponent,
   CategoryComponent,
   CircleComponent,
   Container,

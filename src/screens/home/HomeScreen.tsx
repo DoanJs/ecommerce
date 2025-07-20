@@ -172,15 +172,37 @@ const HomeScreen = ({ navigation }: any) => {
 
           <SpaceComponent height={10} />
 
-          <RowComponent justify="space-between" styles={{ flexWrap: 'wrap' }}>
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
-            <ProductItemComponent />
+          <RowComponent
+            justify="space-around"
+            styles={{ flexWrap: 'wrap', width: '100%' }}
+          >
+            <ProductItemComponent
+              onPress={() => navigation.navigate('ProductDetailScreen', {
+                type: 'shoe'
+              })}
+            />
+            <ProductItemComponent
+              onPress={() => navigation.navigate('ProductDetailScreen', {
+                type: 'clothes'
+              })}
+            />
+            <ProductItemComponent
+              onPress={() => navigation.navigate('ProductDetailScreen', {
+                type: 'bag'
+              })}
+            />
+            <ProductItemComponent
+              onPress={() => navigation.navigate('ProductDetailScreen')}
+            />
+            <ProductItemComponent
+              onPress={() => navigation.navigate('ProductDetailScreen')}
+            />
+            <ProductItemComponent
+              onPress={() => navigation.navigate('ProductDetailScreen')}
+            />
+            <ProductItemComponent
+              onPress={() => navigation.navigate('ProductDetailScreen')}
+            />
           </RowComponent>
         </SectionComponent>
       </ScrollView>

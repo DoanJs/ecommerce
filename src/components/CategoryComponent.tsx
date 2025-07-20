@@ -65,7 +65,7 @@ const CategoryComponent = (props: Props) => {
   ) : (
     <ImageBackground
       source={shoe02}
-      style={{ height: 250, width: 200, marginBottom: 10 }}
+      style={{ height: 250, width: 190, marginBottom: 10 }}
     >
       <View style={{ flex: 1 }} />
       <RowComponent
