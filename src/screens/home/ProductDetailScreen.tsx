@@ -1,6 +1,12 @@
-import { ArrowLeft2, Bag2, Heart } from 'iconsax-react-nativejs';
-import React, { useState } from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ArrowLeft2, ArrowRight2, Bag2, Heart } from 'iconsax-react-nativejs';
+import React, { useRef, useState } from 'react';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import Swiper from 'react-native-swiper';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -37,20 +43,20 @@ const ProductDetailScreen = ({ navigation, route }: any) => {
   const { type } = route.params;
   const [index, setIndex] = useState(0);
   const [size, setSize] = useState('S');
-  const [color, setColor] = useState('white');
+  const [color, setColor] = useState(colors.white);
+  const [quantity, setQuantity] = useState(1);
   const options =
     type && type === 'shoe'
       ? data.shoe
       : type === 'bag'
       ? data.bag
       : data.clothes;
+  const scrollViewRef = useRef<ScrollView>(null);
 
-  const colorOptions = [
-    { color: 'white', value: colors.white },
-    { color: 'dark', value: colors.dark },
-    { color: 'green', value: colors.green },
-    { color: 'star', value: colors.star },
-  ];
+  const scrollToNext = () => {
+    scrollViewRef.current?.scrollTo({ x: 300, animated: true });
+  };
+
   return (
     <Container bg={colors.gray4}>
       <SectionComponent
@@ -152,195 +158,250 @@ const ProductDetailScreen = ({ navigation, route }: any) => {
           paddingVertical: 32,
         }}
       >
-        <SectionComponent>
-          <RowComponent justify="space-between">
-            <RowComponent
-              styles={{ flexDirection: 'column', alignItems: 'flex-start' }}
-            >
-              <TextComponent
-                text="Roller Rabbit"
-                type="title"
-                font={fontFamilies.poppinsBold}
-              />
-              <TextComponent
-                text="Vando Odelle Dress"
-                type="description"
-                font={fontFamilies.poppinsRegular}
-                color={colors.description}
-              />
-              <RowComponent>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <FontAwesome
-                    key={index}
-                    name="star"
-                    size={14}
-                    color={colors.star}
-                    style={{ marginRight: 4 }}
-                  />
-                ))}
-                <TextComponent
-                  text="(320 Review)"
-                  type="description"
-                  font={fontFamilies.poppinsBold}
-                />
-              </RowComponent>
-            </RowComponent>
-            <RowComponent
-              styles={{ flexDirection: 'column', alignItems: 'flex-end' }}
-            >
-              <CircleComponent
-                borderRadius={20}
-                width={80}
-                height={36}
-                color={colors.gray4}
+        <ScrollView>
+          <SectionComponent>
+            <RowComponent justify="space-between">
+              <RowComponent
+                styles={{ flexDirection: 'column', alignItems: 'flex-start' }}
               >
-                <TouchableOpacity onPress={() => {}}>
-                  <TextComponent
-                    text="-"
-                    font={fontFamilies.poppinsBold}
-                    type="description"
-                  />
-                </TouchableOpacity>
                 <TextComponent
-                  text="1"
-                  styles={{ marginHorizontal: 12 }}
+                  text="Roller Rabbit"
+                  type="title"
                   font={fontFamilies.poppinsBold}
-                  type="description"
                 />
-                <TouchableOpacity>
+                <TextComponent
+                  text="Vando Odelle Dress"
+                  type="description"
+                  font={fontFamilies.poppinsRegular}
+                  color={colors.description}
+                />
+                <RowComponent>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <FontAwesome
+                      key={index}
+                      name="star"
+                      size={14}
+                      color={colors.star}
+                      style={{ marginRight: 4 }}
+                    />
+                  ))}
                   <TextComponent
-                    text="+"
+                    text="(320 Review)"
+                    type="description"
+                    font={fontFamilies.poppinsBold}
+                  />
+                </RowComponent>
+              </RowComponent>
+              <RowComponent
+                styles={{ flexDirection: 'column', alignItems: 'flex-end' }}
+              >
+                <CircleComponent
+                  borderRadius={20}
+                  width={80}
+                  height={36}
+                  color={colors.gray4}
+                >
+                  <TouchableOpacity onPress={() => setQuantity(quantity - 1)}>
+                    <TextComponent
+                      text="-"
+                      font={fontFamilies.poppinsBold}
+                      type="description"
+                    />
+                  </TouchableOpacity>
+                  <TextComponent
+                    text={`${quantity}`}
+                    styles={{ marginHorizontal: 12 }}
                     font={fontFamilies.poppinsBold}
                     type="description"
                   />
-                </TouchableOpacity>
-              </CircleComponent>
-              <TextComponent
-                text="Avaliable in stok"
-                type="description"
-                font={fontFamilies.poppinsBold}
-              />
-            </RowComponent>
-          </RowComponent>
-        </SectionComponent>
-
-        <SectionComponent>
-          <RowComponent justify="space-between">
-            <RowComponent
-              styles={{ flexDirection: 'column', alignItems: 'flex-start' }}
-            >
-              <TextComponent
-                text="Size"
-                type="title"
-                font={fontFamilies.poppinsBold}
-              />
-              <SpaceComponent height={10} />
-              <RowComponent>
-                {options.sizes.map((key, index) => (
-                  <CircleComponent
-                    onPress={() => setSize(key)}
-                    styles={{
-                      backgroundColor:
-                        key === size ? colors.dark : colors.white,
-                      borderWidth: 1,
-                      borderColor: colors.gray2,
-                      marginRight: 16,
-                    }}
-                  >
+                  <TouchableOpacity onPress={() => setQuantity(quantity + 1)}>
                     <TextComponent
-                      text={key}
-                      type="title"
-                      color={size === key ? colors.white : colors.gray2}
+                      text="+"
                       font={fontFamilies.poppinsBold}
+                      type="description"
                     />
-                  </CircleComponent>
-                ))}
+                  </TouchableOpacity>
+                </CircleComponent>
+                <TextComponent
+                  text="Avaliable in stok"
+                  type="description"
+                  font={fontFamilies.poppinsBold}
+                />
               </RowComponent>
             </RowComponent>
+          </SectionComponent>
 
-            <Shadow
-              distance={25}
-              startColor={colors.gray}
-              endColor={colors.white}
-              style={{ borderRadius: 100 }}
+          <SectionComponent>
+            <RowComponent
+              justify="space-between"
+              styles={{ alignItems: type === 'bag' ? 'flex-end' : 'center' }}
             >
               <RowComponent
-                styles={{
-                  flexDirection: 'column',
-                  padding: 10,
-                }}
+                styles={{ flexDirection: 'column', alignItems: 'flex-start' }}
               >
-                {colorOptions.map((_, index) => (
+                <TextComponent
+                  text="Size"
+                  type="title"
+                  font={fontFamilies.poppinsBold}
+                />
+                <SpaceComponent height={10} />
+                <RowComponent>
+                  <ScrollView
+                    ref={scrollViewRef}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={type === 'bag' ? undefined : { width: '80%' }}
+                  >
+                    {options.sizes.map((key, index) => (
+                      <CircleComponent
+                        key={index}
+                        onPress={() => setSize(key)}
+                        styles={{
+                          backgroundColor:
+                            key === size ? colors.dark : colors.white,
+                          borderWidth: 1,
+                          borderColor: colors.gray2,
+                          marginRight: 16,
+                        }}
+                      >
+                        <TextComponent
+                          text={key}
+                          type="title"
+                          color={size === key ? colors.white : colors.gray2}
+                          font={fontFamilies.poppinsBold}
+                        />
+                      </CircleComponent>
+                    ))}
+                  </ScrollView>
+                </RowComponent>
+
+                {type === 'shoe' ? (
                   <TouchableOpacity
-                    onPress={() => setColor(_.color)}
-                    key={index}
+                    onPress={scrollToNext}
                     style={{
-                      backgroundColor:
-                        _.color === 'white' ? colors.white : _.value,
-                      borderWidth: 1,
-                      borderColor: _.color === 'white' ? colors.gray2 : _.value,
-                      height: 20,
-                      width: 20,
-                      borderRadius: 100,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      marginBottom: 8,
+                      position: 'absolute',
+                      right: -20,
+                      top: 50,
                     }}
                   >
-                    {color === _.color ? (
-                      <Entypo
-                        name="check"
-                        color={_.color === 'white' ? colors.dark : colors.white}
-                      />
-                    ) : (
-                      ''
-                    )}
+                    <ArrowRight2 size={16} />
                   </TouchableOpacity>
-                ))}
+                ) : (
+                  ''
+                )}
               </RowComponent>
-            </Shadow>
-          </RowComponent>
-        </SectionComponent>
+
+              <Shadow
+                distance={25}
+                startColor={colors.gray}
+                endColor={colors.white}
+                style={{ borderRadius: 100 }}
+              >
+                <RowComponent
+                  styles={{
+                    flexDirection: type === 'bag' ? 'row' : 'column',
+                    padding: 10,
+                  }}
+                >
+                  {options.colors.map((_, index) => (
+                    <TouchableOpacity
+                      onPress={() => setColor(_)}
+                      key={index}
+                      style={{
+                        backgroundColor: _ === colors.white ? colors.white : _,
+                        borderWidth: 1,
+                        borderColor: _ === colors.white ? colors.gray2 : _,
+                        height: 20,
+                        width: 20,
+                        borderRadius: 100,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginRight: type === 'bag' ? 8 : undefined,
+                        marginBottom: type === 'bag' ? undefined : 8,
+                      }}
+                    >
+                      {color === _ ? (
+                        <Entypo
+                          name="check"
+                          color={
+                            _ === colors.white ? colors.dark : colors.white
+                          }
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </TouchableOpacity>
+                  ))}
+                </RowComponent>
+              </Shadow>
+            </RowComponent>
+          </SectionComponent>
+
+          <SectionComponent styles={{ flex: 1 }}>
+            <TextComponent
+              text="Description"
+              type="title"
+              font={fontFamilies.poppinsBold}
+            />
+            <SpaceComponent height={10} />
+            <TextComponent
+              text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur repudiandae rerum odit autem, hic amet iure! Repellendus qui labore enim animi, expedita suscipit maiores molestias a perferendis praesentium odit illum."
+              type="description"
+              font={fontFamilies.poppinsRegular}
+              color={colors.description}
+            />
+          </SectionComponent>
+        </ScrollView>
 
         <SectionComponent>
-          <TextComponent
-            text="Description"
-            type="title"
-            font={fontFamilies.poppinsBold}
-          />
-          <SpaceComponent height={10} />
-          <TextComponent
-            text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur repudiandae rerum odit autem, hic amet iure! Repellendus qui labore enim animi, expedita suscipit maiores molestias a perferendis praesentium odit illum."
-            type="description"
-            font={fontFamilies.poppinsRegular}
-            color={colors.description}
-          />
-        </SectionComponent>
-
-        <SectionComponent>
-          <RowComponent justify="space-between">
+          <RowComponent
+            justify="space-between"
+            styles={
+              type === 'bag'
+                ? {
+                    backgroundColor: colors.dark,
+                    padding: 10,
+                    borderRadius: 16,
+                  }
+                : undefined
+            }
+          >
             <RowComponent
               styles={{ alignItems: 'flex-start', flexDirection: 'column' }}
             >
-              <TextComponent
-                text="Total Price"
-                type="description"
-                font={fontFamilies.poppinsBold}
-                color={colors.gray3}
-                size={12}
-              />
+              {type !== 'bag' ? (
+                <TextComponent
+                  text="Total Price"
+                  type="description"
+                  font={fontFamilies.poppinsBold}
+                  color={colors.gray3}
+                  size={12}
+                />
+              ) : undefined}
               <TextComponent
                 text="$198.00"
-                type="title"
+                type="bigTitle"
                 font={fontFamilies.poppinsBold}
+                color={type === 'bag' ? colors.white : colors.dark}
               />
             </RowComponent>
             <ButtonComponent
-              styles={{ paddingHorizontal: 42 }}
-              textStyles={{ color: colors.white }}
+              color={type === 'bag' ? colors.white : colors.dark}
+              styles={{
+                paddingHorizontal: 42,
+                borderRadius: type === 'bag' ? 10 : 100,
+              }}
+              textStyles={{
+                color: type === 'bag' ? colors.dark : colors.white,
+              }}
               onPress={() => {}}
               text="Add to cart"
-              prefix={<Bag2 color={colors.white} style={{ marginRight: 16 }} />}
+              prefix={
+                <Bag2
+                  color={type === 'bag' ? colors.dark : colors.white}
+                  style={{ marginRight: 16 }}
+                />
+              }
             />
           </RowComponent>
         </SectionComponent>

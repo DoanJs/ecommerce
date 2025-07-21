@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }: any) => {
         </RowComponent>
       </SectionComponent>
 
-      <ScrollView>
+      <ScrollView showsHorizontalScrollIndicator={false}>
         <SectionComponent>
           <TextComponent
             text="Welcome,"
@@ -192,16 +192,24 @@ const HomeScreen = ({ navigation }: any) => {
               })}
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen')}
+              onPress={() => navigation.navigate('ProductDetailScreen',{
+                type: 'clothes'
+              })}
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen')}
+              onPress={() => navigation.navigate('ProductDetailScreen',{
+                type: 'bag'
+              })}
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen')}
+              onPress={() => navigation.navigate('ProductDetailScreen',{
+                type: 'shoe'
+              })}
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen')}
+              onPress={() => navigation.navigate('ProductDetailScreen',{
+                type: 'clothes'
+              })}
             />
           </RowComponent>
         </SectionComponent>
