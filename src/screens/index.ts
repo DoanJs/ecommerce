@@ -10,6 +10,7 @@ import ProductListScreen from './home/ProductListScreen';
 import ProductMixScreen from './home/ProductMixScreen';
 import SearchCategoryScreen from './home/SearchCategoryScreen';
 import NotificationsScreen from './notifications/NotificationsScreen';
+import LogOutScreen from './profiles/LogOutScreen';
 import ProfileScreen from './profiles/ProfileScreen';
 
 export {
@@ -18,6 +19,7 @@ export {
   HomeCategoryScreen,
   HomeScreen,
   Login,
+  LogOutScreen,
   NotificationsScreen,
   ProductListScreen,
   ProductMixScreen,
