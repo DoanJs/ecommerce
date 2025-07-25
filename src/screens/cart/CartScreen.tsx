@@ -1,12 +1,13 @@
-import { ArrowLeft2, ArrowRight2, Bag2 } from 'iconsax-react-nativejs';
+import { ArrowLeft2, ArrowRight2, Bag2, Trash } from 'iconsax-react-nativejs';
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import {
   GestureHandlerRootView,
   Swipeable,
 } from 'react-native-gesture-handler';
 import { Shadow } from 'react-native-shadow-2';
 import {
+  CartItemComponent,
   CircleComponent,
   Container,
   RowComponent,
@@ -16,14 +17,24 @@ import {
 } from '../../components';
 import { colors } from '../../constants/colors';
 import { fontFamilies } from '../../constants/fontFamilies';
-import clothes from '../../assests/images/clothes.png';
 
 const CartScreen = ({ navigation }: any) => {
-  const renderRightActions = () => (
-    <TouchableOpacity onPress={() => {}}>
-      <TextComponent text="Delete" />
-    </TouchableOpacity>
-  );
+  const renderRightActions = () => {
+    return (
+      <TouchableOpacity
+        onPress={() => {}}
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: colors.dark,
+          paddingHorizontal: 20,
+        }}
+      >
+        {/* <View style={{ backgroundColor: 'red', height: 100, width: 10 }} /> */}
+        <Trash color={colors.white} variant="Bold" />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <Container bg={colors.white}>
@@ -75,79 +86,40 @@ const CartScreen = ({ navigation }: any) => {
           type="bigTitle"
           font={fontFamilies.poppinsBold}
         />
+        <SpaceComponent height={10} />
 
-        <GestureHandlerRootView>
-          <Swipeable renderRightActions={renderRightActions}>
-            <Shadow
-              distance={25}
-              startColor={colors.dark}
-              endColor={colors.blue}
-            >
-              <RowComponent styles={{ borderRadius: 16 }}>
-                <Image
-                  source={clothes}
-                  style={{
-                    height: 100,
-                    width: 100,
-                    borderRadius: 10,
-                    marginRight: 10,
-                  }}
-                />
-                <RowComponent
-                  styles={{
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    width: '100%',
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <GestureHandlerRootView>
+            {Array.from({ length: 6 }).map((_, index) => (
+              <Shadow
+                key={index}
+                distance={10}
+                startColor={colors.gray4}
+                endColor={colors.white}
+                offset={[10, 10]}
+                style={{
+                  backgroundColor: colors.dark,
+                  borderRadius: 12,
+                  width: '100%',
+                  marginBottom: 20,
+                }}
+              >
+                <Swipeable
+                  renderRightActions={renderRightActions}
+                  containerStyle={{
+                    borderRadius: 12,
                   }}
                 >
-                  <TextComponent
-                    text="Roller Rabbit"
-                    font={fontFamilies.poppinsBold}
-                    type="title"
-                  />
-                  <TextComponent
-                    text="Roller Rabbit"
-                    color={colors.description}
-                    type="description"
-                  />
-                  <RowComponent justify="space-between">
-                    <TextComponent
-                      text="$198.00"
-                      font={fontFamilies.poppinsBold}
-                      type="bigTitle"
-                    />
-                    <SpaceComponent width={130} />
-                    <RowComponent
-                      styles={{
-                        backgroundColor: colors.gray4,
-                        paddingHorizontal: 16,
-                        paddingVertical: 2,
-                        borderRadius: 16,
-                      }}
-                    >
-                      <TouchableOpacity>
-                        <TextComponent text="-" type="title" />
-                      </TouchableOpacity>
-                      <SpaceComponent width={8} />
-                      <TextComponent text="1" type="title" />
-                      <SpaceComponent width={8} />
-                      <TouchableOpacity>
-                        <TextComponent text="+" type="title" />
-                      </TouchableOpacity>
-                    </RowComponent>
-                  </RowComponent>
-                </RowComponent>
-              </RowComponent>
-            </Shadow>
-          </Swipeable>
-        </GestureHandlerRootView>
-        {/* <ScrollView showsVerticalScrollIndicator={false}>
-          <CartItemComponent />
-          <CartItemComponent />
-          <CartItemComponent />
-          <CartItemComponent />
-          <CartItemComponent />
-        </ScrollView> */}
+                  <View
+                    style={{ backgroundColor: colors.white, borderRadius: 12 }}
+                  >
+                    <CartItemComponent />
+                  </View>
+                </Swipeable>
+              </Shadow>
+            ))}
+          </GestureHandlerRootView>
+        </ScrollView>
       </SectionComponent>
 
       <SectionComponent>
@@ -211,22 +183,4 @@ const localStyle = StyleSheet.create({
     position: 'absolute',
     right: 12,
   },
-});
-const styles = StyleSheet.create({
-  container: { flex: 1, marginTop: 50 },
-  row: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  rowText: { fontSize: 16 },
-  deleteButton: {
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 80,
-    height: '100%',
-  },
-  deleteText: { color: '#fff', fontWeight: 'bold' },
 });

@@ -68,7 +68,7 @@ const CartItemComponent = () => {
           </TouchableOpacity>
         </RowComponent>
       </View>
-      
+
       <RowComponent justify="space-between" styles={{ width: '100%' }}>
         <RowComponent
           justify="flex-start"

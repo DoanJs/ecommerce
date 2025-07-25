@@ -10,16 +10,20 @@ import ProductListScreen from './home/ProductListScreen';
 import ProductMixScreen from './home/ProductMixScreen';
 import SearchCategoryScreen from './home/SearchCategoryScreen';
 import NotificationsScreen from './notifications/NotificationsScreen';
+import ConversationScreen from './profiles/ConversationScreen';
 import LogOutScreen from './profiles/LogOutScreen';
+import MessageScreen from './profiles/MessageScreen';
 import ProfileScreen from './profiles/ProfileScreen';
 
 export {
   CartScreen,
+  ConversationScreen,
   HomeAuth,
   HomeCategoryScreen,
   HomeScreen,
   Login,
   LogOutScreen,
+  MessageScreen,
   NotificationsScreen,
   ProductListScreen,
   ProductMixScreen,

@@ -4,18 +4,13 @@ import {
   Car,
   Card,
   Heart,
+  Message2,
   Setting2,
   User,
   Warning2,
 } from 'iconsax-react-nativejs';
 import React from 'react';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import clothes from '../../assests/images/clothes.png';
 import {
@@ -33,26 +28,37 @@ const ProfileScreen = ({ navigation }: any) => {
     {
       icon: <User variant="Bold" size={20} />,
       text: 'Personal Details',
+      screen: 'ProfileScreen',
+    },
+    {
+      icon: <Message2 variant="Bold" size={20} />,
+      text: 'Message',
+      screen: 'MessageScreen',
     },
     {
       icon: <Bag variant="Bold" size={20} />,
       text: 'My Order',
+      screen: 'CartScreen',
     },
     {
       icon: <Heart variant="Bold" size={20} />,
       text: 'My Favourites',
+      screen: 'Js',
     },
     {
       icon: <Car variant="Bold" size={20} />,
       text: 'Shipping Address',
+      screen: 'Js',
     },
     {
       icon: <Card variant="Bold" size={20} />,
       text: 'My Card',
+      screen: 'Js',
     },
     {
       icon: <Setting2 variant="Bold" size={20} />,
       text: 'Settings',
+      screen: 'Js',
     },
   ];
 
@@ -60,10 +66,12 @@ const ProfileScreen = ({ navigation }: any) => {
     {
       icon: <Warning2 variant="Bold" size={20} />,
       text: 'FAQs',
+      screen: 'Js',
     },
     {
       icon: <BrifecaseTick variant="Bold" size={20} />,
       text: 'Privacy Policy',
+      screen: 'Js',
     },
   ];
   return (
@@ -143,7 +151,7 @@ const ProfileScreen = ({ navigation }: any) => {
           >
             {data.map((_, index) => (
               <ProfileItemComponent
-                onPress={() => {}}
+                onPress={() => navigation.navigate(_.screen)}
                 key={index}
                 text={_.text}
                 icon={_.icon}
@@ -181,12 +189,12 @@ const ProfileScreen = ({ navigation }: any) => {
 };
 
 export default ProfileScreen;
-const localStyle = StyleSheet.create({
-  swDash: {
-    height: 4,
-    width: 8,
-    backgroundColor: colors.white,
-    position: 'absolute',
-    right: 12,
-  },
-});
+// const localStyle = StyleSheet.create({
+//   swDash: {
+//     height: 4,
+//     width: 8,
+//     backgroundColor: colors.white,
+//     position: 'absolute',
+//     right: 12,
+//   },
+// });

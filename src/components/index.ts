@@ -4,6 +4,8 @@ import CategoryComponent from './CategoryComponent';
 import CircleComponent from './CircleComponent';
 import Container from './Container';
 import InputComponent from './InputComponent';
+import MessageDetailComponent from './MessageDetailComponent';
+import MessageItemComponent from './MessageItemComponent';
 import ProductItemComponent from './ProductItemComponent';
 import ProductPopularComponent from './ProductPopularComponent';
 import ProductSaleComponent from './ProductSaleComponent';
@@ -19,6 +21,8 @@ export {
   CartItemComponent,
   CategoryComponent,
   CircleComponent,
+  MessageItemComponent,
+  MessageDetailComponent,
   Container,
   InputComponent,
   ProductItemComponent,
