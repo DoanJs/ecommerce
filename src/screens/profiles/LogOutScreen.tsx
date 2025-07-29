@@ -7,7 +7,13 @@ import {
   Notification1,
 } from 'iconsax-react-nativejs';
 import React, { useState } from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import clothes from '../../assests/images/clothes.png';
 import {
   ButtonComponent,
@@ -48,6 +54,11 @@ const LogOutScreen = ({ navigation }: any) => {
       icon: <GlobalSearch variant="Bold" />,
       text: 'Language',
       value: 'English',
+    },
+    {
+      icon: <GlobalSearch variant="Bold" />,
+      text: 'Country or Region',
+      value: 'Canada',
     },
     {
       icon: <Notification1 variant="Bold" />,
@@ -248,34 +259,47 @@ const LogOutScreen = ({ navigation }: any) => {
             borderWidth: 1,
             borderColor: colors.gray2,
             paddingHorizontal: 20,
-            paddingVertical: 30,
+            paddingVertical: 10,
             borderRadius: 16,
             flexDirection: 'column',
             alignItems: 'flex-start',
           }}
         >
-          {data2.map((_, index) => (
-            <ProfileItemComponent
-              key={index}
-              text={_.text}
-              icon={_.icon}
-              onPress={() => {}}
-              arrowRight={_.text !== 'Notification' && _.text !== 'Dark Mood'}
-              checkRadio={_.text === 'Notification' || _.text === 'Dark Mood'}
-              title={
-                _.text === 'Language' || _.text === 'Dark Mood' ? (
-                  <TextComponent
-                    text={_.value ?? ''}
-                    flex={1}
-                    styles={{ textAlign: 'right', marginRight: 16 }}
-                    size={10}
-                    font={fontFamilies.poppinsBold}
-                    color={colors.gray2}
-                  />
-                ) : undefined
-              }
-            />
-          ))}
+          <ScrollView>
+            {data2.map((_, index) => (
+              <ProfileItemComponent
+                key={index}
+                text={_.text}
+                icon={_.icon}
+                onPress={() =>
+                  navigation.navigate(
+                    _.text === 'Language' || _.text === 'Country or Region'
+                      ? 'LanguageCountryScreen'
+                      : `${_.text}CountryScreen`,
+                    {
+                      type: _.text,
+                    },
+                  )
+                }
+                arrowRight={_.text !== 'Notification' && _.text !== 'Dark Mood'}
+                checkRadio={_.text === 'Notification' || _.text === 'Dark Mood'}
+                title={
+                  _.text === 'Language' ||
+                  _.text === 'Country or Region' ||
+                  _.text === 'Dark Mood' ? (
+                    <TextComponent
+                      text={_.value ?? ''}
+                      flex={1}
+                      styles={{ textAlign: 'right', marginRight: 16 }}
+                      size={10}
+                      font={fontFamilies.poppinsBold}
+                      color={colors.gray2}
+                    />
+                  ) : undefined
+                }
+              />
+            ))}
+          </ScrollView>
         </RowComponent>
       </SectionComponent>
 

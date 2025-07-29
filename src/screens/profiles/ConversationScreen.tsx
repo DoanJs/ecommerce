@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import {
   CircleComponent,
   Container,
@@ -22,7 +23,6 @@ import {
 } from '../../components';
 import { colors } from '../../constants/colors';
 import { fontFamilies } from '../../constants/fontFamilies';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const ConversationScreen = ({ navigation }: any) => {
   const [value, setValue] = useState('');
@@ -130,7 +130,13 @@ const ConversationScreen = ({ navigation }: any) => {
         }}
       >
         <SectionComponent>
-          <RowComponent styles={{alignItems:'center', justifyContent:'center'}}>
+          <RowComponent
+            styles={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingVertical: 10
+            }}
+          >
             <InputComponent
               styles={{
                 paddingVertical: 10,
@@ -139,6 +145,7 @@ const ConversationScreen = ({ navigation }: any) => {
                 borderRadius: 100,
                 paddingHorizontal: 20,
                 flex: 1,
+                marginBottom: 0
               }}
               placeholder="Type message..."
               placeholderTextColor={colors.dark}
@@ -159,6 +166,8 @@ const ConversationScreen = ({ navigation }: any) => {
               value={value}
               onChange={val => setValue(val)}
             />
+
+            <SpaceComponent width={16}/>
 
             <TouchableOpacity
               style={{

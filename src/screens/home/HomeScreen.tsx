@@ -66,18 +66,19 @@ const HomeScreen = ({ navigation }: any) => {
         <SpaceComponent height={20} />
 
         <SectionComponent>
-          <RowComponent
-            styles={{ paddingLeft: 30 }}
-            onPress={() => navigation.navigate('SearchCategoryScreen')}
-          >
-            <SearchNormal1 style={{ marginRight: 10 }} color={colors.dark} />
-            <TextComponent
-              text="Search..."
-              type="description"
-              color={colors.description}
-              flex={1}
-            />
-            <CircleComponent>
+          <RowComponent styles={{ paddingLeft: 30 }}>
+            <RowComponent
+              styles={{ flex: 1 }}
+              onPress={() => navigation.navigate('SearchCategoryScreen')}
+            >
+              <SearchNormal1 style={{ marginRight: 10 }} color={colors.dark} />
+              <TextComponent
+                text="Search..."
+                type="description"
+                color={colors.description}
+              />
+            </RowComponent>
+            <CircleComponent onPress={() => navigation.navigate('FilterScreen')}>
               <Candle2 size={20} color={colors.white} variant="Bold" />
             </CircleComponent>
           </RowComponent>
@@ -177,39 +178,53 @@ const HomeScreen = ({ navigation }: any) => {
             styles={{ flexWrap: 'wrap', width: '100%' }}
           >
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen', {
-                type: 'shoe'
-              })}
+              onPress={() =>
+                navigation.navigate('ProductDetailScreen', {
+                  type: 'shoe',
+                })
+              }
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen', {
-                type: 'clothes'
-              })}
+              onPress={() =>
+                navigation.navigate('ProductDetailScreen', {
+                  type: 'clothes',
+                })
+              }
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen', {
-                type: 'bag'
-              })}
+              onPress={() =>
+                navigation.navigate('ProductDetailScreen', {
+                  type: 'bag',
+                })
+              }
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen',{
-                type: 'clothes'
-              })}
+              onPress={() =>
+                navigation.navigate('ProductDetailScreen', {
+                  type: 'clothes',
+                })
+              }
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen',{
-                type: 'bag'
-              })}
+              onPress={() =>
+                navigation.navigate('ProductDetailScreen', {
+                  type: 'bag',
+                })
+              }
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen',{
-                type: 'shoe'
-              })}
+              onPress={() =>
+                navigation.navigate('ProductDetailScreen', {
+                  type: 'shoe',
+                })
+              }
             />
             <ProductItemComponent
-              onPress={() => navigation.navigate('ProductDetailScreen',{
-                type: 'clothes'
-              })}
+              onPress={() =>
+                navigation.navigate('ProductDetailScreen', {
+                  type: 'clothes',
+                })
+              }
             />
           </RowComponent>
         </SectionComponent>

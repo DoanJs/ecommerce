@@ -58,7 +58,7 @@ const ProfileScreen = ({ navigation }: any) => {
     {
       icon: <Setting2 variant="Bold" size={20} />,
       text: 'Settings',
-      screen: 'Js',
+      screen: 'SettingScreen',
     },
   ];
 

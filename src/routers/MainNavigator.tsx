@@ -1,6 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { ConversationScreen, LogOutScreen } from '../screens';
+import {
+  ConversationScreen,
+  FilterScreen,
+  LanguageCountryScreen,
+  LogOutScreen,
+} from '../screens';
 import ProductDetailScreen from '../screens/home/ProductDetailScreen';
 import TabNavigator from './TabNavigator';
 
@@ -15,6 +20,8 @@ const MainNavigator = () => {
       />
       <Stack.Screen name="LogOutScreen" component={LogOutScreen} />
       <Stack.Screen name="ConversationScreen" component={ConversationScreen} />
+      <Stack.Screen name="FilterScreen" component={FilterScreen} />
+      <Stack.Screen name="LanguageCountryScreen" component={LanguageCountryScreen} />
     </Stack.Navigator>
   );
 };
